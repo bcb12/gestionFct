@@ -1,0 +1,21 @@
+# Configuración de la Base de Datos
+database:
+  host: localhost
+  port: 5432
+  user: dbuser
+  password: secretpassword
+  name: dbname
+  ssl_mode: disable
+
+# Configuración del Servidor/API
+server:
+  port: 8080
+  host: 0.0.0.0
+
+# Configuración de Seguridad
+security:
+  jwt_secret: mysupersecretkey
+  jwt_expiration: 3600  # en segundos, por ejemplo 1 hora
+  cors_allowed_origins:
+    - https://frontend.example.com
+    - https://anotherdomain.com

@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres-development:
+    image: 'postgres:latest'
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - pgdataDevelopment:/var/lib/postgresql/data/
+
+volumes:
+  pgdataDevelopment:

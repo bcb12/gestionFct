@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  postgres-development:
+    image: 'postgres:latest'
+    ports:
+      - "${DB_HOST_PORT_DEVELOPMENT}:${DB_CONTAINER_PORT_DEVELOPMENT}"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER_DEVELOPMENT}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_DEVELOPMENT}
+      POSTGRES_DB: ${DB_DATABASE_DEVELOPMENT}
+    volumes:
+      - pgdataDevelopment:/var/lib/postgresql/data/
+  
+  postgres-testing:
+    image: 'postgres:latest'
+    ports:
+      - "${DB_HOST_PORT_TESTING}:${DB_CONTAINER_PORT_TESTING}"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER_TESTING}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_TESTING}
+      POSTGRES_DB: ${DB_DATABASE_TESTING}
+    volumes:
+      - pgdataTesting:/var/lib/postgresql/data/
+
+  postgres-production:
+    image: 'postgres:latest'
+    ports:
+      - "${DB_HOST_PORT_PRODUCTION}:${DB_CONTAINER_PORT_PRODUCTION}"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER_PRODUCTION}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_PRODUCTION}
+      POSTGRES_DB: ${DB_DATABASE_PRODUCTION}
+    volumes:
+      - pgdataProduction:/var/lib/postgresql/data/
+
+  pgadmin:
+    image: 'dpage/pgadmin4'
+    ports:
+      - "${PGADMIN_HOST_PORT_PRODUCTION}:${PGADMIN_CONTAINER_PORT_PRODUCTION}"
+    restart: always
+    environment:
+      PGADMIN_LISTEN_PORT: ${PGADMIN_CONTAINER_PORT_PRODUCTION}
+      PGADMIN_LISTEN_ADDRESS: ${PGADMIN_LISTEN_ADDRESS}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    depends_on:
+      - postgres-development
+      - postgres-testing
+      - postgres-production
+
+volumes:
+  pgdataDevelopment:
+  pgdataTesting:
+  pgdataProduction:
