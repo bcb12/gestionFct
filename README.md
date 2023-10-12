@@ -43,7 +43,12 @@ docker-compose -f docker-compose-dev.yml up -d
 This command will build the backend services based on the configurations in docker-compose-dev.yml and start them in detached mode.
 ### Setting Up the Databases and Database Admin Tool (pgAdmin)
 
-1. At the root level of your project directory, build and start the database services:
+1. Navigate to the databases directory:
+```
+cd databases
+```
+
+2. Build and start the database services:
 ```
 docker-compose up -d
 ```
