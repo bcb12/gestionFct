@@ -12,3 +12,10 @@ services:
       - .:/app
     env_file:
       - ./config/.env.development
+    networks:
+      - gestionFct
+
+networks:
+  gestionFct:
+    name: gestionFct
+    driver: bridge

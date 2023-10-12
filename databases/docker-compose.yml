@@ -12,6 +12,8 @@ services:
       POSTGRES_DB: ${DB_DATABASE_DEVELOPMENT}
     volumes:
       - pgdataDevelopment:/var/lib/postgresql/data/
+    networks:
+      - gestionFct
   
   postgres-testing:
     image: 'postgres:latest'
@@ -24,6 +26,8 @@ services:
       POSTGRES_DB: ${DB_DATABASE_TESTING}
     volumes:
       - pgdataTesting:/var/lib/postgresql/data/
+    networks:
+      - gestionFct
 
   postgres-production:
     image: 'postgres:latest'
@@ -36,6 +40,8 @@ services:
       POSTGRES_DB: ${DB_DATABASE_PRODUCTION}
     volumes:
       - pgdataProduction:/var/lib/postgresql/data/
+    networks:
+      - gestionFct
 
   pgadmin:
     image: 'dpage/pgadmin4'
@@ -51,6 +57,13 @@ services:
       - postgres-development
       - postgres-testing
       - postgres-production
+    networks:
+      - gestionFct
+
+networks:
+  gestionFct:
+    name: gestionFct
+    driver: bridge
 
 volumes:
   pgdataDevelopment:
