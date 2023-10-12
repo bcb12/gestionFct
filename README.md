@@ -24,7 +24,35 @@ Key Features
 This project was initiated as a hands-on exercise to practice and showcase skills in Golang, React.js, Docker, and other related technologies. While it serves a practical purpose in managing student internships, the primary goal is to experiment with and understand the underlying tech stack.
 
 ## Getting started
-TO-DO
+To set up the Student Internship Documentation Manager locally for development purposes, follow the steps below:
+Prerequisites
+
+Ensure you have Docker and Docker Compose installed on your machine.
+### Setting Up the Backend
+
+1. Navigate to the backend directory:
+```
+cd backend
+```
+
+3. Build and start the backend services:
+```
+docker-compose -f docker-compose-dev.yml up -d
+```
+
+This command will build the backend services based on the configurations in docker-compose-dev.yml and start them in detached mode.
+### Setting Up the Databases and Database Admin Tool (pgAdmin)
+
+1. At the root level of your project directory, build and start the database services:
+```
+docker-compose up -d
+```
+
+This command will set up your databases and also start the pgAdmin tool for database management.
+
+### Accessing the Application
+
+Once both the backend services and databases are running, you can access the application through your browser at the designated port (e.g., http://localhost:8080 for the backend if you've mapped to port 8080).
 
 ## Contributing
 
