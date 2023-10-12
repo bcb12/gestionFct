@@ -23,6 +23,9 @@ Key Features
 
 This project was initiated as a hands-on exercise to practice and showcase skills in Golang, React.js, Docker, and other related technologies. While it serves a practical purpose in managing student internships, the primary goal is to experiment with and understand the underlying tech stack.
 
+## Getting started
+TO-DO
+
 ## Contributing
 
 Feel free to fork this repository, submit issues, or pull requests if you think you can contribute in any way. All contributions are welcome!
